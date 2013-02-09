@@ -1,4 +1,10 @@
 extends layout
 
 block content
-
+  h3 Files in Your S3 Bucket
+  h5
+    | Bucket:
+    code #{s3_response.Name}
+  ul.unstyled
+    - for file in s3_response.Contents
+      li= file.Key
