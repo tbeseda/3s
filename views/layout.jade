@@ -1,0 +1,11 @@
+!!! 5
+html
+  head
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    != css('application')
+  body
+    .container: .row: .span8.offset2
+      block content
+
+    script(src='/js/bootstrap.min.js')
+    != js('application')
