@@ -14,5 +14,12 @@ app.get '/', (req, res) ->
   client.list {}, (err, data) ->
     res.render 'index', {s3_response: data}
 
+app.get '/url', (req, res) ->
+  filename = req.query.filename
+  expiration = new Date()
+  expiration.setMonth(expiration.getMonth() + 1)
+  url = client.signedUrl(filename, expiration)
+  res.json url: url
+
 app.listen 8000, ->
   console.log 'Express server listening on port 8000.'

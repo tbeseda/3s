@@ -5,6 +5,7 @@ block content
   h5
     | Bucket:
     code #{s3_response.Name}
-  ul.unstyled
+  p Click filename for public URL
+  ul#the-files.unstyled
     - for file in s3_response.Contents
-      li= file.Key
+      li: a(data-key=file.Key)= file.Key
