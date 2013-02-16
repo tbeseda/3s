@@ -1,6 +1,5 @@
 express = require 'express'
 knox    = require 'knox'
-fs      = require 'fs'
 config  = require './settings.json'
 
 app = express()
@@ -21,5 +20,5 @@ app.get '/url', (req, res) ->
   url = client.signedUrl(filename, expiration)
   res.json url: url
 
-app.listen 8000, ->
-  console.log 'Express server listening on port 8000.'
+app.listen 8080, ->
+  console.log 'Express server listening on port 8080.'
