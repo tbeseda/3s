@@ -4,10 +4,11 @@ config  = require './settings.json'
 
 app = express()
 app.use express.static(__dirname + '/public')
+app.use(express.basicAuth('admin', config.password))
 app.use require('connect-assets')()
 app.set('view engine', 'jade')
 
-client = knox.createClient(config)
+client = knox.createClient(config.S3)
 
 app.get '/', (req, res) ->
   client.list {}, (err, data) ->
